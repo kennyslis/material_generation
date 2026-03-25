@@ -1,14 +1,14 @@
 {
   "baseline": {
-    "avg_delta_g_abs": 0.3340179641405233,
-    "avg_stability": 0.8391295732884041,
-    "avg_synth": 0.9273490304605962,
-    "success_rate": 0.0
+    "avg_delta_g_abs": 0.5175842970291086,
+    "avg_stability": 0.802402783265791,
+    "avg_synth": 0.90548397281099,
+    "success_rate": 0.2
   },
   "ours": {
-    "avg_delta_g_abs": 0.019447144742814552,
-    "avg_stability": 0.8416734888872126,
-    "avg_synth": 0.9455857804377501,
+    "avg_delta_g_abs": 0.06887513137864104,
+    "avg_stability": 0.8425214054361412,
+    "avg_synth": 0.9437496132661929,
     "success_rate": 1.0
   },
   "num_saved_structures": 10

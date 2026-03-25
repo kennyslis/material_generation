@@ -56,8 +56,13 @@ def train(args):
     set_seed(args.seed)
     device = torch.device("cuda" if torch.cuda.is_available() and not args.cpu else "cpu")
 
-    train_dataset = MaterialDataset(Path(args.output_dir) / "dataset", split="train", num_samples=args.train_samples)
-    val_dataset = MaterialDataset(Path(args.output_dir) / "dataset", split="val", num_samples=args.val_samples)
+    dataset_kwargs = {
+        "dataset_source": args.dataset_source,
+        "real_data_path": args.real_data_path,
+        "max_nodes": args.max_nodes,
+    }
+    train_dataset = MaterialDataset(Path(args.output_dir) / "dataset", split="train", num_samples=args.train_samples, **dataset_kwargs)
+    val_dataset = MaterialDataset(Path(args.output_dir) / "dataset", split="val", num_samples=args.val_samples, **dataset_kwargs)
     train_loader = DataLoader(train_dataset, batch_size=args.batch_size, shuffle=True, collate_fn=collate_fn)
     val_loader = DataLoader(val_dataset, batch_size=args.batch_size, shuffle=False, collate_fn=collate_fn)
 
@@ -140,6 +145,9 @@ def build_parser():
     parser.add_argument("--diffusion-steps", type=int, default=60)
     parser.add_argument("--train-samples", type=int, default=320)
     parser.add_argument("--val-samples", type=int, default=96)
+    parser.add_argument("--max-nodes", type=int, default=12)
+    parser.add_argument("--dataset-source", type=str, choices=["auto", "real", "surrogate"], default="auto")
+    parser.add_argument("--real-data-path", type=str, default=None)
     parser.add_argument("--seed", type=int, default=7)
     parser.add_argument("--log-interval", type=int, default=10)
     parser.add_argument("--cpu", action="store_true")

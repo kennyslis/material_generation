@@ -41,7 +41,12 @@ def main(args):
     checkpoint_path = Path(args.output_dir) / "checkpoints" / "best_model.pt"
     model, config = load_model(checkpoint_path, device)
 
-    test_dataset = MaterialDataset(Path(args.output_dir) / "dataset", split="test", num_samples=args.test_samples)
+    dataset_kwargs = {
+        "dataset_source": args.dataset_source,
+        "real_data_path": args.real_data_path,
+        "max_nodes": args.max_nodes,
+    }
+    test_dataset = MaterialDataset(Path(args.output_dir) / "dataset", split="test", num_samples=args.test_samples, **dataset_kwargs)
     generator = StructureGenerator(model=model, dataset=test_dataset, device=device)
 
     guided_candidates = generator.generate(num_candidates=args.num_candidates, top_k=args.top_k, guided=True, rerank=True)
@@ -73,6 +78,9 @@ def build_parser():
     parser.add_argument("--num-candidates", type=int, default=48)
     parser.add_argument("--top-k", type=int, default=10)
     parser.add_argument("--test-samples", type=int, default=96)
+    parser.add_argument("--max-nodes", type=int, default=12)
+    parser.add_argument("--dataset-source", type=str, choices=["auto", "real", "surrogate"], default="auto")
+    parser.add_argument("--real-data-path", type=str, default=None)
     parser.add_argument("--seed", type=int, default=13)
     parser.add_argument("--cpu", action="store_true")
     return parser
