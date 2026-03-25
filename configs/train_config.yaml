@@ -1,0 +1,142 @@
+# MatterGen训练配置文件
+# 专门为2D材料生成优化
+
+defaults:
+  - data_module: mattergen_data
+  - model: mattergen
+  - trainer: gpu
+  - logger: tensorboard
+  - hydra: default
+
+# 基本设置
+run_name: "2d_materials_generation"
+seed: 42
+
+# 数据模块配置
+data_module:
+  _target_: mattergen.data.MatterGenDataModule
+  
+  # 数据路径
+  csv_path: "data/mattergen/materials.csv"
+  cif_column: "cif_file"
+  id_column: "material_id"
+  
+  # 批处理设置
+  batch_size: 8  # 根据GPU内存调整
+  num_workers: 4  # Windows建议设为0-4
+  pin_memory: true
+  
+  # 数据处理
+  max_atoms: 100
+  cutoff_radius: 6.0
+  
+  # 数据增强
+  data_augmentation: true
+  rotation_prob: 0.5
+  
+  # 验证集比例
+  val_split: 0.1
+  test_split: 0.1
+
+# 模型配置
+model:
+  _target_: mattergen.models.MatterGenModel
+  
+  # 扩散模型设置
+  diffusion_steps: 1000
+  noise_schedule: "cosine"
+  
+  # 网络架构
+  hidden_dim: 256
+  num_layers: 6
+  num_heads: 8
+  
+  # SE(3)等变设置
+  max_degree: 2
+  num_radial: 64
+  
+  # 条件生成（可选）
+  condition_on_property: false
+  property_dim: 0
+  
+  # 学习率
+  learning_rate: 1e-4
+  weight_decay: 1e-5
+  
+  # 调度器
+  lr_scheduler: "cosine"
+  warmup_steps: 1000
+
+# 训练器配置
+trainer:
+  _target_: pytorch_lightning.Trainer
+  
+  # GPU设置
+  devices: 1
+  accelerator: "gpu"
+  precision: "16-mixed"  # 节省显存
+  
+  # 训练轮数
+  max_epochs: 200
+  
+  # 检查点
+  enable_checkpointing: true
+  
+  # 验证
+  val_check_interval: 0.25  # 每1/4个epoch验证一次
+  
+  # 日志
+  log_every_n_steps: 50
+  enable_progress_bar: true
+  
+  # 早停
+  enable_early_stopping: true
+  early_stopping_patience: 20
+  
+  # 梯度相关
+  gradient_clip_val: 1.0
+  accumulate_grad_batches: 2  # 梯度累积
+
+# 回调函数
+callbacks:
+  model_checkpoint:
+    _target_: pytorch_lightning.callbacks.ModelCheckpoint
+    dirpath: "checkpoints/${run_name}"
+    filename: "epoch_{epoch:03d}_val_loss_{val/loss:.4f}"
+    monitor: "val/loss"
+    mode: "min"
+    save_top_k: 3
+    save_last: true
+    
+  early_stopping:
+    _target_: pytorch_lightning.callbacks.EarlyStopping
+    monitor: "val/loss"
+    mode: "min"
+    patience: 20
+    min_delta: 1e-4
+    
+  learning_rate_monitor:
+    _target_: pytorch_lightning.callbacks.LearningRateMonitor
+    logging_interval: "step"
+
+# 日志记录
+logger:
+  tensorboard:
+    _target_: pytorch_lightning.loggers.TensorBoardLogger
+    save_dir: "logs"
+    name: "${run_name}"
+    version: null
+    default_hp_metric: false
+
+# Hydra配置
+hydra:
+  run:
+    dir: "outputs/${now:%Y-%m-%d}/${now:%H-%M-%S}"
+  sweep:
+    dir: "multirun/${now:%Y-%m-%d}/${now:%H-%M-%S}"
+    subdir: "${hydra.job.num}"
+
+# 环境设置
+environment:
+  CUDA_VISIBLE_DEVICES: "0"
+  TORCH_CUDNN_V8_API_ENABLED: "1"

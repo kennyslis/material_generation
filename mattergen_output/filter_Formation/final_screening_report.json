@@ -1,0 +1,65 @@
+{
+  "final_screening_results": {
+    "screening_date": "2025-07-31T13:02:18.645109",
+    "total_constraints_applied": 3,
+    "constraints": [
+      "元素数量 ≤ 3",
+      "Energy above hull < 0.1 eV/atom",
+      "Formation energy < 0.0 eV/atom"
+    ]
+  },
+  "passed_materials_count": 3,
+  "passed_materials_details": [
+    {
+      "material_id": "generated_crystals_0004",
+      "formula": "Tb4(HoTl3)3",
+      "elements": [
+        "Tb",
+        "Ho",
+        "Tl"
+      ],
+      "num_elements": 3,
+      "space_group": 1,
+      "2d_score": 0.78,
+      "synthesis_score": 0.6,
+      "formation_energy_estimated": -1.7177449332158854,
+      "overall_score": 0.8340000000000001,
+      "cif_file": "mattergen_output\\cif_files\\generated_crystals_0004.cif",
+      "meets_all_constraints": true
+    },
+    {
+      "material_id": "generated_crystals_0005",
+      "formula": "MgNiSb",
+      "elements": [
+        "Mg",
+        "Ni",
+        "Sb"
+      ],
+      "num_elements": 3,
+      "space_group": 186,
+      "2d_score": 0.479,
+      "synthesis_score": 0.6,
+      "formation_energy_estimated": -2.599696699643685,
+      "overall_score": 0.7437,
+      "cif_file": "mattergen_output\\cif_files\\generated_crystals_0005.cif",
+      "meets_all_constraints": true
+    },
+    {
+      "material_id": "generated_crystals_0003",
+      "formula": "NaSrSb",
+      "elements": [
+        "Na",
+        "Sr",
+        "Sb"
+      ],
+      "num_elements": 3,
+      "space_group": 12,
+      "2d_score": 0.42,
+      "synthesis_score": 0.6,
+      "formation_energy_estimated": -2.5282441736527432,
+      "overall_score": 0.726,
+      "cif_file": "mattergen_output\\cif_files\\generated_crystals_0003.cif",
+      "meets_all_constraints": true
+    }
+  ]
+}

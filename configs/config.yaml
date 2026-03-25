@@ -1,0 +1,68 @@
+# @package _global_
+
+# 默认任务
+task: finetune
+
+# 新增：微调(finetune)专用配置
+finetune:
+  # 官方预训练模型的检查点文件路径
+  pretrained_ckpt_path: "pretrained_checkpoints/mp_20_base.ckpt"
+  # 官方预训练模型对应的配置文件路径
+  pretrained_config_path: "pretrained_checkpoints/mp_20_base_config.yaml"
+
+# 数据相关配置
+data:
+  data_dir: data/
+  raw_dir: ${data.data_dir}/raw
+  processed_dir: ${data.data_dir}/processed
+  twod_dir: ${data.data_dir}/2d_materials
+  features_dir: ${data.data_dir}/features
+  
+  properties_csv: ${data.data_dir}/predicted_properties.csv
+  property_column_name: "predicted_formation_energy"
+  
+  # 用于数据获取
+  max_materials: 1000  # 从MP获取的最大材料数
+  
+  # 用于图转换
+  cutoff_radius: 5.0
+
+# 模型相关配置
+model:
+  # 基础扩散模型 (U-Net) 参数
+  dim: 64
+  dim_mults: [1, 2, 4]
+  num_resnet_blocks: 2
+  
+  # 条件生成相关
+  condition_on_property: True  # 是否启用条件生成
+  property_dim: 1              # 条件属性的维度 (例如，delta_g 就是1维)
+  
+# 训练相关配置
+training:
+  # pytorch_lightning.Trainer 的参数
+  max_epochs: 100
+  batch_size: 8
+  accelerator: auto  # 'cpu', 'gpu', 'tpu', 'auto'
+  devices: auto
+  precision: "16-mixed" # '16-mixed', 32, 64
+  
+  # 回调
+  checkpoint_dir: ${hydra:run.dir}/checkpoints
+  
+  # 其他
+  learning_rate: 1e-4
+  num_workers: 4
+
+# 日志配置
+logging:
+  save_dir: logs/
+  name: "mattergen-conditional"
+  
+# Hydra 配置
+hydra:
+  run:
+    dir: outputs/${now:%Y-%m-%d}/${now:%H-%M-%S}
+  sweep:
+    dir: multirun/${now:%Y-%m-%d}/${now:%H-%M-%S}
+    subdir: ${hydra.job.num} 

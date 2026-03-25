@@ -1,0 +1,15 @@
+{
+  "processing_summary": {
+    "total_input_materials": 3,
+    "successfully_converted": 3,
+    "conversion_failed": 0,
+    "success_rate": "100.0%",
+    "total_2d_structures_generated": 6
+  },
+  "conversion_methods_statistics": {
+    "layer_separation": 1,
+    "exfoliation": 1,
+    "surface_cleavage": 2
+  },
+  "failed_materials": []
+}

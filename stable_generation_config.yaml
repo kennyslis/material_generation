@@ -1,0 +1,136 @@
+# MatterGen稳定材料生成配置文件
+# 用于生成符合稳定性和合成性要求的二维材料
+
+# 基本生成参数
+generation:
+  num_samples: 200              # 生成材料数量
+  batch_size: 8                 # 批处理大小 (根据GPU内存调整)
+  checkpoint_path: "checkpoints/last.ckpt"  # 模型checkpoint路径
+  output_dir: "stable_materials_output"     # 输出目录
+  
+  # MatterGen生成参数
+  temperature: 0.8              # 生成多样性 (0.5-2.0, 越小越保守)
+  top_p: 0.9                   # 核采样参数
+  guidance_scale: 7.5          # 条件生成强度
+  num_steps: 50                # 扩散步数
+  seed: 42                     # 随机种子 (可选)
+
+# 稳定性筛选标准
+stability_criteria:
+  hull_energy_threshold: 0.1    # Energy above hull阈值 (eV/atom)
+  formation_energy_threshold: 0.0  # 形成能阈值 (eV/atom)
+  max_elements: 3               # 最大元素种类数 (合成性)
+  min_2d_score: 0.7            # 最小2D材料特征评分
+  
+  # 额外稳定性检查
+  density_range: [1.0, 15.0]   # 密度范围 (g/cm³)
+  volume_per_atom_range: [5.0, 50.0]  # 每原子体积范围 (Ų)
+
+# 合成性评估参数
+synthesis:
+  # HER催化相关的优选元素
+  her_active_elements: 
+    - "Mo"  # 钼系材料
+    - "W"   # 钨系材料
+    - "V"   # 钒系材料
+    - "Nb"  # 铌系材料
+    - "Ta"  # 钽系材料
+    - "Ti"  # 钛系材料
+    - "Zr"  # 锆系材料
+    - "Hf"  # 铪系材料
+    
+  chalcogen_elements:
+    - "S"   # 硫
+    - "Se"  # 硒
+    - "Te"  # 碲
+    
+  support_elements:
+    - "C"   # 碳
+    - "N"   # 氮
+    - "B"   # 硼
+    - "P"   # 磷
+    
+  # 避免的元素 (有毒、放射性、稀有)
+  avoid_elements:
+    - "Hg"  # 汞
+    - "Pb"  # 铅
+    - "Cd"  # 镉
+    - "U"   # 铀
+    - "Th"  # 钍
+    - "Ra"  # 镭
+    - "At"  # 砹
+    - "Rn"  # 氡
+
+# 2D材料特征评估
+dimensionality:
+  # c/a比值范围 (层状材料特征)
+  min_c_a_ratio: 2.0           # 最小c/a比值
+  max_c_a_ratio: 10.0          # 最大c/a比值
+  
+  # 层间距离范围
+  interlayer_distance_range: [3.0, 12.0]  # Ångström
+  
+  # 2D特征权重
+  c_a_ratio_weight: 0.4        # c/a比值权重
+  layer_density_weight: 0.3    # 层内密度权重
+  symmetry_weight: 0.3         # 对称性权重
+
+# 综合评分权重
+scoring:
+  weights:
+    d2_feature: 0.30           # 2D特征权重
+    stability: 0.25            # 稳定性权重
+    synthesis: 0.25            # 合成性权重
+    her_potential: 0.20        # HER催化潜力权重
+  
+  # 评分阈值
+  min_overall_score: 0.6       # 最小综合评分
+  top_n_materials: 20          # 保留前N个最佳材料
+
+# 输出设置
+output:
+  save_cif_files: true         # 保存CIF文件
+  save_analysis: true          # 保存分析结果
+  save_filtered: true          # 保存筛选结果
+  save_plots: true             # 保存可视化图表
+  
+  # 文件格式
+  analysis_format: "csv"       # 分析结果格式 (csv/json)
+  create_summary_report: true  # 创建总结报告
+  
+  # 可视化选项
+  plot_distribution: true      # 绘制属性分布图
+  plot_correlation: true       # 绘制相关性热图
+  plot_filtering_funnel: true  # 绘制筛选漏斗图
+
+# 高级选项
+advanced:
+  # 并行处理
+  use_multiprocessing: true    # 使用多进程
+  num_processes: 4             # 进程数 (0为自动检测)
+  
+  # 内存管理
+  batch_analysis: true         # 批量分析 (大数据集时使用)
+  max_memory_usage: "8GB"      # 最大内存使用限制
+  
+  # 日志设置
+  log_level: "INFO"            # 日志级别 (DEBUG/INFO/WARNING/ERROR)
+  log_file: "generation.log"   # 日志文件名
+  
+  # 数据源配置
+  use_materials_project: false  # 是否连接Materials Project获取热力学数据
+  mp_api_key: null             # Materials Project API密钥 (如果使用MP数据)
+
+# 条件生成 (可选)
+conditional_generation:
+  enabled: false               # 是否启用条件生成
+  target_properties:
+    formation_energy: -1.0     # 目标形成能 (eV/atom)
+    band_gap: [0.0, 2.0]      # 目标带隙范围 (eV)
+    # 可以添加更多目标属性
+  
+  # 条件权重
+  property_weights:
+    formation_energy: 0.4
+    band_gap: 0.3
+    stability: 0.3

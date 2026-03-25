@@ -1,0 +1,6 @@
+material_id,formula,elements,num_elements,space_group,dimensionality,c_length,c_a_ratio,2d_score,synthesis_score,formation_energy,hull_energy,cif_file
+generated_crystals_0001,Tl2In4SnPb5,"['Tl', 'In', 'Sn', 'Pb']",4,6,2,10.022896766662598,1.655787520701745,0.497,0.3,0.0,0.0,mattergen_output\cif_files\generated_crystals_0001.cif
+generated_crystals_0002,TmLuOsPd,"['Tm', 'Lu', 'Os', 'Pd']",4,216,2,4.798316478729248,0.999807614518803,0.3,0.3,0.0,0.0,mattergen_output\cif_files\generated_crystals_0002.cif
+generated_crystals_0003,NaSrSb,"['Na', 'Sr', 'Sb']",3,12,2,9.617475509643555,1.4002614952028662,0.42,0.6,0.0,0.0,mattergen_output\cif_files\generated_crystals_0003.cif
+generated_crystals_0004,Tb4(HoTl3)3,"['Tb', 'Ho', 'Tl']",3,1,2,15.824984550476074,2.802920447718214,0.78,0.6,0.0,0.0,mattergen_output\cif_files\generated_crystals_0004.cif
+generated_crystals_0005,MgNiSb,"['Mg', 'Ni', 'Sb']",3,186,2,6.867011070251465,1.59730010739039,0.479,0.6,0.0,0.0,mattergen_output\cif_files\generated_crystals_0005.cif

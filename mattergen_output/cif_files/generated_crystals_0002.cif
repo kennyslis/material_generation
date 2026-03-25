@@ -1,0 +1,29 @@
+data_image0
+_chemical_formula_structural       TmLuPdOs
+_chemical_formula_sum              "Tm1 Lu1 Pd1 Os1"
+_cell_length_a       4.7995376393495945
+_cell_length_b       4.798941926218884
+_cell_length_c       4.798316478729248
+_cell_angle_alpha    60.02239000755091
+_cell_angle_beta     60.00240883672932
+_cell_angle_gamma    60.00734536588805
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  Tm  Tm1       1.0  0.03290366789568028  0.21228313513199726  0.19647800912780117  1.0000
+  Lu  Lu1       1.0  0.5327753416984139  0.7121708383556171  0.6965616943597723  1.0000
+  Pd  Pd1       1.0  0.2827236640338707  0.46231895760468406  0.4465108806354584  1.0000
+  Os  Os1       1.0  0.782600044847176  0.9621924767246663  0.9464214439793155  1.0000

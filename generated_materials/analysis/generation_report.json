@@ -1,0 +1,211 @@
+{
+  "generation_summary": {
+    "total_generated": 100,
+    "passed_screening": 33,
+    "success_rate": "33.0%"
+  },
+  "filtering_criteria": {
+    "hull_energy_threshold": 0.1,
+    "formation_energy_threshold": 0.0,
+    "max_elements": 3,
+    "min_2d_score": 0.7
+  },
+  "top_materials": [
+    {
+      "material_id": "generated_0037",
+      "formula": "NbSe2",
+      "elements": [
+        "Nb",
+        "Se"
+      ],
+      "num_elements": 2,
+      "space_group": 194,
+      "dimensionality": 2,
+      "c_length": 12.295,
+      "c_a_ratio": 3.8908227848101262,
+      "2d_score": 0.9,
+      "synthesis_score": 1.0,
+      "formation_energy": -0.112,
+      "hull_energy": 0.001,
+      "cif_file": "generated_materials\\cif_files\\generated_0037.cif",
+      "overall_score": 0.9471
+    },
+    {
+      "material_id": "generated_0055",
+      "formula": "Te2Mo",
+      "elements": [
+        "Te",
+        "Mo"
+      ],
+      "num_elements": 2,
+      "space_group": 194,
+      "dimensionality": 2,
+      "c_length": 12.295,
+      "c_a_ratio": 3.8908227848101262,
+      "2d_score": 0.9,
+      "synthesis_score": 1.0,
+      "formation_energy": -0.022,
+      "hull_energy": 0.05,
+      "cif_file": "generated_materials\\cif_files\\generated_0055.cif",
+      "overall_score": 0.9406
+    },
+    {
+      "material_id": "generated_0091",
+      "formula": "VS2",
+      "elements": [
+        "V",
+        "S"
+      ],
+      "num_elements": 2,
+      "space_group": 194,
+      "dimensionality": 2,
+      "c_length": 12.295,
+      "c_a_ratio": 3.8908227848101262,
+      "2d_score": 0.9,
+      "synthesis_score": 1.0,
+      "formation_energy": -0.125,
+      "hull_energy": 0.03,
+      "cif_file": "generated_materials\\cif_files\\generated_0091.cif",
+      "overall_score": 0.93
+    },
+    {
+      "material_id": "generated_0033",
+      "formula": "MoS2",
+      "elements": [
+        "Mo",
+        "S"
+      ],
+      "num_elements": 2,
+      "space_group": 194,
+      "dimensionality": 2,
+      "c_length": 12.295,
+      "c_a_ratio": 3.8908227848101262,
+      "2d_score": 0.9,
+      "synthesis_score": 1.0,
+      "formation_energy": -0.156,
+      "hull_energy": 0.027,
+      "cif_file": "generated_materials\\cif_files\\generated_0033.cif",
+      "overall_score": 0.9253
+    },
+    {
+      "material_id": "generated_0010",
+      "formula": "WSe2",
+      "elements": [
+        "W",
+        "Se"
+      ],
+      "num_elements": 2,
+      "space_group": 194,
+      "dimensionality": 2,
+      "c_length": 12.295,
+      "c_a_ratio": 3.8908227848101262,
+      "2d_score": 0.9,
+      "synthesis_score": 1.0,
+      "formation_energy": -0.29,
+      "hull_energy": 0.014,
+      "cif_file": "generated_materials\\cif_files\\generated_0010.cif",
+      "overall_score": 0.905
+    },
+    {
+      "material_id": "generated_0075",
+      "formula": "VS2",
+      "elements": [
+        "V",
+        "S"
+      ],
+      "num_elements": 2,
+      "space_group": 194,
+      "dimensionality": 2,
+      "c_length": 12.295,
+      "c_a_ratio": 3.8908227848101262,
+      "2d_score": 0.9,
+      "synthesis_score": 1.0,
+      "formation_energy": -0.249,
+      "hull_energy": 0.076,
+      "cif_file": "generated_materials\\cif_files\\generated_0075.cif",
+      "overall_score": 0.8822
+    },
+    {
+      "material_id": "generated_0047",
+      "formula": "Te2Mo",
+      "elements": [
+        "Te",
+        "Mo"
+      ],
+      "num_elements": 2,
+      "space_group": 194,
+      "dimensionality": 2,
+      "c_length": 12.295,
+      "c_a_ratio": 3.8908227848101262,
+      "2d_score": 0.9,
+      "synthesis_score": 1.0,
+      "formation_energy": -0.438,
+      "hull_energy": 0.032,
+      "cif_file": "generated_materials\\cif_files\\generated_0047.cif",
+      "overall_score": 0.8664000000000001
+    },
+    {
+      "material_id": "generated_0079",
+      "formula": "Te2Mo",
+      "elements": [
+        "Te",
+        "Mo"
+      ],
+      "num_elements": 2,
+      "space_group": 194,
+      "dimensionality": 2,
+      "c_length": 12.295,
+      "c_a_ratio": 3.8908227848101262,
+      "2d_score": 0.9,
+      "synthesis_score": 1.0,
+      "formation_energy": -0.406,
+      "hull_energy": 0.09,
+      "cif_file": "generated_materials\\cif_files\\generated_0079.cif",
+      "overall_score": 0.8438000000000001
+    },
+    {
+      "material_id": "generated_0007",
+      "formula": "Te2Mo",
+      "elements": [
+        "Te",
+        "Mo"
+      ],
+      "num_elements": 2,
+      "space_group": 194,
+      "dimensionality": 2,
+      "c_length": 12.295,
+      "c_a_ratio": 3.8908227848101262,
+      "2d_score": 0.9,
+      "synthesis_score": 1.0,
+      "formation_energy": -0.551,
+      "hull_energy": 0.035,
+      "cif_file": "generated_materials\\cif_files\\generated_0007.cif",
+      "overall_score": 0.8422999999999999
+    },
+    {
+      "material_id": "generated_0077",
+      "formula": "NbSe2",
+      "elements": [
+        "Nb",
+        "Se"
+      ],
+      "num_elements": 2,
+      "space_group": 194,
+      "dimensionality": 2,
+      "c_length": 12.295,
+      "c_a_ratio": 3.8908227848101262,
+      "2d_score": 0.9,
+      "synthesis_score": 1.0,
+      "formation_energy": -0.482,
+      "hull_energy": 0.094,
+      "cif_file": "generated_materials\\cif_files\\generated_0077.cif",
+      "overall_score": 0.8266000000000001
+    }
+  ],
+  "statistics": {
+    "avg_2d_score": 0.9,
+    "avg_synthesis_score": 1.0,
+    "avg_formation_energy": -1.0034242424242423,
+    "avg_hull_energy": 0.04821212121212121
+  }
+}

@@ -1,0 +1,31 @@
+data_image0
+_chemical_formula_structural       MgSbMgSbNi2
+_chemical_formula_sum              "Mg2 Sb2 Ni2"
+_cell_length_a       4.297991590144826
+_cell_length_b       4.300281255989936
+_cell_length_c       6.867011070251465
+_cell_angle_alpha    89.96332438602516
+_cell_angle_beta     90.02191375219434
+_cell_angle_gamma    120.00318875864478
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  Mg  Mg1       1.0  0.005415404583784319  0.06249335665635598  0.39648467311797514  1.0000
+  Sb  Sb1       1.0  0.33891802909732704  0.7291561949539368  0.6315898894344079  1.0000
+  Mg  Mg2       1.0  0.0059700369357864646  0.06213586784556066  0.8968124985170121  1.0000
+  Sb  Sb2       1.0  0.6721853613682822  0.3957789236291625  0.13152724437132512  1.0000
+  Ni  Ni1       1.0  0.6720991138375498  0.39518654428854283  0.7456647163651808  1.0000
+  Ni  Ni2       1.0  0.33874461142022616  0.7293892514504269  0.245151922545028  1.0000
